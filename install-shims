@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e;
+
+SHIM_DEST="$HOME/bin";
+REAL_SOURCE="$(realpath ./)";
+if [ ! -d $SHIM_DEST ]; then
+	mkdir -p $SHIM_DEST;
+fi
+
+for f in $REAL_SOURCE/shims/*; do
+	chmod +x $f;
+	filename="${f##*/}";
+	if [ ! -e $SHIM_DEST/$filename ]; then
+		echo "Creating shim for $filename";
+		ln -s $f $SHIM_DEST/$filename;
+	fi
+done
