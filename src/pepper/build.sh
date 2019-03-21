@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t pepper:latest .
+docker build -t camalot/pepper:latest .

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t oscli:latest .
+docker build -t camalot/oscli:latest .

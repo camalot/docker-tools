@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-curl -X GET -s -O https://github.com/jessfraz/dockerfiles/raw/master/packer/Dockerfile ./.Dockerfile
+curl -X GET https://github.com/jessfraz/dockerfiles/raw/master/packer/Dockerfile --output ./.Dockerfile --silent
 
-docker build -t packer:lastest .
+docker build -t camalot/packer:lastest -f ./.Dockerfile .
 
-rm ./.Dockerfile
+rm ./Dockerfile
