@@ -46,3 +46,6 @@ Session.vim
 # -----------------------------------
 *.pyc
 kubeout.txt
+
+
+.Dockerfile

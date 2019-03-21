@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
 
 set -e;
+REAL_SOURCE="$(realpath ./)";
+ORIG_PWD="$(pwd)";
+
+
+for s in $REAL_SOURCE/src/*; do
+	if [ -e $s/build.sh ]; then
+		cd $s;
+		bash $s/build.sh;
+	fi
+	cd $ORIG_PWD;
+done
 
 SHIM_DEST="$HOME/bin";
-REAL_SOURCE="$(realpath ./)";
 if [ ! -d $SHIM_DEST ]; then
 	mkdir -p $SHIM_DEST;
 fi
