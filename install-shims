@@ -21,6 +21,9 @@ fi
 for f in $REAL_SOURCE/shims/*; do
 	chmod +x $f;
 	filename="${f##*/}";
+	if [ -e $SHIM_DEST/$filename ]; then
+		rm $SHIM_DEST/$filename;
+	fi
 	if [ ! -e $SHIM_DEST/$filename ]; then
 		echo "Creating shim for $filename";
 		ln -s $f $SHIM_DEST/$filename;

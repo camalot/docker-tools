@@ -4,4 +4,4 @@ curl -X GET https://github.com/jessfraz/dockerfiles/raw/master/packer/Dockerfile
 
 docker build -t camalot/packer:lastest -f ./.Dockerfile .
 
-rm ./Dockerfile
+rm ./.Dockerfile
