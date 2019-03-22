@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker run --rm -v "$(pwd)":/work -w="/work" -i -t camalot/packer:latest $@
+docker run --rm -v "$(pwd)":/work -w="/work" -i -t packer:local $@

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+tool="terraform";
+version="local";
+
+img_count=$(docker images | grep -i '^terraform\s*local' | wc -l);
+
+if (( img_count < 1 )); then
+	
+fi
+docker run --rm -v "$(pwd)":/work -w="/work" -i -t terraform:local $@

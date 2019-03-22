@@ -2,6 +2,6 @@
 
 curl -X GET https://github.com/jessfraz/dockerfiles/raw/master/packer/Dockerfile --output ./.Dockerfile --silent
 
-docker build -t camalot/packer:lastest -f ./.Dockerfile .
+docker build -t packer:local -f ./.Dockerfile .
 
 rm ./.Dockerfile
