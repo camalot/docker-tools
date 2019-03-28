@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+docker run -d --restart=unless-stopped -p 3080:80 \
+	-v $HOME/DockerData/json-server:/data \
+	-v "$(pwd)":/work \
+	-w=/work \
+	vimagick/json-server:latest \
+	-w /data/${1:-"db.json"} -H 0.0.0.0 -p 80 "${@:2}";
