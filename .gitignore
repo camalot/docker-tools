@@ -48,4 +48,6 @@ Session.vim
 kubeout.txt
 
 
-.Dockerfile
+.*-Dockerfile
+
+bin/

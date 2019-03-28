@@ -5,20 +5,41 @@ REAL_SOURCE="$(realpath ./)";
 ORIG_PWD="$(pwd)";
 
 
-for s in $REAL_SOURCE/src/*; do
-	if [ -e $s/build.sh ]; then
-		cd $s;
-		bash $s/build.sh;
-	fi
-	cd $ORIG_PWD;
-done
+get_opts() {
+	while getopts ":b" opt; do
+	  case $opt in
+			b) export opt_build="1";
+			;;
+			\?) echo "Invalid option -$OPTARG" >&2;
+			exit 1;
+			;;
+		esac;
+	done;
+
+	return 0;
+};
+
+get_opts "$@";
+
+if [ "$opt_build" = "1" ]; then
+	for s in $REAL_SOURCE/src/*; do
+		if [ -e $s/build.sh ]; then
+			cd $s;
+			bash $s/build.sh;
+		fi
+		cd $ORIG_PWD;
+	done
+fi
 
 SHIM_DEST="$HOME/bin";
 if [ ! -d $SHIM_DEST ]; then
 	mkdir -p $SHIM_DEST;
 fi
 
-for f in $REAL_SOURCE/shims/*; do
+cp -v $REAL_SOURCE/shims/* $REAL_SOURCE/bin/;
+
+# Shims generated from github repo docker files
+for f in $REAL_SOURCE/bin/*; do
 	chmod +x $f;
 	filename="${f##*/}";
 	if [ -e $SHIM_DEST/$filename ]; then
