@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker run -d -p 9090:9000 -v $HOME/DockerData/webhook:/etc/webhook almir/webhook -hooks /etc/webhook/${1:-"hooks.json"} -hotreload  -verbose -nopanic
